@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroLAB AI - Diagnose</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Container -->
+    <div class="flex min-h-screen">
+
+        <!-- Sidebar -->
+        <div class="bg-white w-64 p-6 flex flex-col space-y-4 shadow-lg">
+            <!-- Logo and title -->
+            <div class="flex items-center space-x-2">
+                <img src="/mnt/data/Body.png" alt="Logo" class="w-8 h-8">
+                <span class="text-xl font-bold">NeuroLAB AI</span>
+            </div>
+            <hr>
+            <!-- Navigation -->
+            <nav class="mt-6 flex-1">
+                <ul class="space-y-4">
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-blue-600 bg-blue-100 rounded-lg">
+                            <span>🏠</span> <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-blue-600 bg-blue-100 rounded-lg">
+                            <span>🔬</span> <span>Diagnose</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-gray-600">
+                            <span>💻</span> <span>Clinical Case Simulation</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-gray-600">
+                            <span>💊</span> <span>PharmacEASY</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-gray-600">
+                            <span>🔍</span> <span>Research</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-gray-600">
+                            <span>🛋️</span> <span>Doctor's Lounge</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-gray-600">
+                            <span>📝</span> <span>Contribute</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-gray-600">
+                            <span>💬</span> <span>Expert Advice</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- User profile -->
+            <div class="mt-auto flex items-center space-x-2">
+                <img src="Avatar.png" alt="User" class="w-10 h-10 rounded-full">
+                <div>
+                    <p class="font-semibold">Dr. Shiv</p>
+                    <p class="text-sm text-gray-500">New Delhi, India</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8 space-y-8">
+
+            <!-- Header -->
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold">History of Present Illness</h1>
+            </div>
+
+            <!-- Form -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="text-gray-600 mb-4">Enter information related to your case</p>
+
+                <div class="bg-blue-100 p-4 rounded-lg mb-6">
+                    <p class="text-blue-700 text-sm flex items-center">
+                        <span class="material-icons mr-2">info</span>
+                        Quick DDX: Don't have time to fill out all of the fields? Describe some of the key information
+                        instead.
+                        <a href="#" class="text-blue-600 ml-auto">Try quick DDX</a>
+                    </p>
+                </div>
+
+                <form action="#">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="chief-complaint">Chief Complaint(s)
+                            *</label>
+                        <input
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                            type="text" id="chief-complaint" placeholder="Example : Headache with morning rise Nausea & Vomiting">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="duration">Duration *</label>
+                        <input
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                            type="number" id="duration" placeholder="Enter Number">
+                        <select
+                            class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500">
+                            <option>Days</option>
+                            <option>Weeks</option>
+                            <option>Months</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-bold mb-2" for="additional-history">Associated Symptoms &
+                            Additional History</label>
+                        <textarea
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                            id="additional-history" rows="4"
+                            placeholder="Example : 2 Attacks of Tonic Clonic Jerky Involuntary Movements with Post Attack Unconsciousness & Dizziness."></textarea>
+                    </div>
+
+                    <div class="text-right">
+                        <button
+                            class="bg-blue-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 focus:ring focus:ring-blue-200">Continue</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

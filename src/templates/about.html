@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+        <form id="userForm">
+            <div class="mb-4">
+                <label for="firstName" class="block text-gray-700 text-sm font-bold mb-2">First Name <span class="text-red-500">*</span></label>
+                <input type="text" id="firstName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your Name">
+                <p id="firstNameError" class="text-red-500 text-xs hidden mt-2">First Name is required.</p>
+            </div>
+
+            <div class="mb-4">
+                <label for="lastName" class="block text-gray-700 text-sm font-bold mb-2">Last Name <span class="text-red-500">*</span></label>
+                <input type="text" id="lastName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your Name">
+                <p id="lastNameError" class="text-red-500 text-xs hidden mt-2">Last Name is required.</p>
+            </div>
+
+            <div class="mb-4">
+                <label for="phoneNumber" class="block text-gray-700 text-sm font-bold mb-2">Phone Number <span class="text-red-500">*</span></label>
+                <div class="flex items-center">
+                    <select id="countryCode" class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="+91">+91</option>
+                        <option value="+1">+1</option>
+                        <option value="+44">+44</option>
+                    </select>
+                    <input type="text" id="phoneNumberInput" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="0000000000">
+                </div>
+                <p id="phoneError" class="text-red-500 text-xs hidden mt-2">Please enter a valid phone number.</p>
+            </div>
+
+            <div class="mb-4">
+                <label for="currentRole" class="block text-gray-700 text-sm font-bold mb-2">Current Role <span class="text-red-500">*</span></label>
+                <select id="currentRole" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="Select">Select</option>
+                    <option value="Medical Aspirant">Medical Aspirant</option>
+                    <option value="Medical Student">Medical Student</option>
+                    <option value="Intern">Intern</option>
+                    <option value="Junior Resident">Junior Resident</option>
+                    <option value="Senior Resident">Senior Resident</option>
+                    <option value="Medical Researcher">Medical Researcher</option>
+                    <option value="Consultant">Consultant</option>
+                    <option value="Clinical Specialist">Clinical Specialist</option>
+                    <option value="Fellowship">Fellowship</option>
+                    <option value="Gene Scientist">Gene Scientist</option>
+                    <option value="Clinical Psychologist">Clinical Psychologist</option>
+                    <option value="Nutritionist">Nutritionist</option>
+                    <option value="Medical Educator">Medical Educator</option>
+                    <option value="Healthcare IT Professional">Healthcare IT Professional</option>
+                    <option value="Paramedic">Paramedic</option>
+                    <option value="Public Health Professional">Public Health Professional</option>
+                    <option value="Healthcare administrator">Healthcare administrator</option>
+                    <option value="Others">Others</option>
+                </select>
+                <p id="roleError" class="text-red-500 text-xs hidden mt-2">Please select your current role.</p>
+            </div>
+
+            <div class="mb-4">
+                <label for="specialization" class="block text-gray-700 text-sm font-bold mb-2">Specialization</label>
+                <select id="specialization" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="Select">Select</option>
+                    <!-- Add other specialization options here -->
+                </select>
+                <p id="specializationError" class="text-red-500 text-xs hidden mt-2">Please select your specialization.</p>
+            </div>
+
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Continue</button>
+        </form>
+    </div>
+
+</body>
+</html>

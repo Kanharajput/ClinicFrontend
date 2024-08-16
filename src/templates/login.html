@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroLAB AI Sign up</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="static\login.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-4 text-center">Welcome</h2>
+        <p class="text-gray-600 text-center mb-6">Sign to NeuroLAB AI to Enter the Dashboard</p>
+        <form id="loginForm">
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email address</label>
+                <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your email">
+                <p id="emailError" class="text-red-500 text-xs hidden mt-2">Please enter a valid email address.</p>
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <input type="password" id="password" name="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your Password">
+                <p id="passwordError" class="text-red-500 text-xs hidden mt-2">Password cannot be empty.</p>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+                <a href="#" class="text-sm text-blue-500 hover:text-blue-700">Forgot password?</a>
+            </div>
+            <div class="mb-6">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus-shadow-outline w-full">Login</button>
+            </div>
+            <div class="text-center mb-6">
+                <hr class="border-gray-300 w-[40%]">
+            </div>
+            <div class="mb-4">
+                <button type="button" class="bg-white hover:bg-gray-100 text-gray-800 font-bold rounded border-2 border-gray-100 py-2 px-4 rounded inline-flex items-center justify-center w-full">
+                    <img src="img/Google.png" class="h-5 w-5 text-gray-400 mr-2" alt="Google Logo">
+                    Continue with Google
+                </button>
+            </div>
+            <div class="mb-4">
+                <button type="button" class="bg-white hover:bg-gray-100 text-gray-800 font-bold rounded border-2 border-gray-100 py-2 px-4 rounded inline-flex items-center justify-center w-full">
+                    <img src="img/Apple.png" class="h-5 w-5 text-gray-400 mr-2" alt="Apple Logo">
+                    Continue with Apple
+                </button>
+            </div>
+            <!-- <div class="text-center">
+                <p class="text-gray-600 text-sm font-medium">Don't have an account? <a href="#" class="text-blue-500 hover:text-blue-700">Signup</a></p>
+            </div> -->
+        </form>
+    </div>
+</body>
+</html>
