@@ -1,10 +1,9 @@
 // import { Link } from "react-router-dom";
-// localStorage.setItem("access_key","jslkfj234j42kj432ksfz@")
-// console.log(localStorage.getItem("access_key"))
 
 import { useState } from "react";
 
-export default function Home() {
+export default function Registration() {
+  const api_url = process.env.api_url;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -36,12 +35,40 @@ export default function Home() {
     }
 
     if (isValid) {
-      alert("Registration successful!");
-      // Proceed with form submission or other actions
-      // here we will call the registration api
-    }
-  };
+      // register the user
+      fetch('http://3.110.175.181/registration', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password
+        }),
+      })
+        .then(response => {
+          if (response.status == 406) {
+            setEmailError("Email already exists")
+          }
 
+          if (response.status == 200) {
+            return response.json()
+          }
+        })
+
+        .then(data => {
+          console.log(data);      // Handle the parsed JSON data
+          localStorage.setItem("access_token",data.access_token)
+          localStorage.setItem("refresh_token", data.refresh_token)
+          localStorage.setItem("user_id", data.id)
+        })
+        
+        // if any then fails it catch it here
+        .catch(error => {
+          console.error('Error:', error); 
+        });
+    }
+  }
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
@@ -82,7 +109,7 @@ export default function Home() {
               type="submit"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus-shadow-outline w-full"
             >
-              Login
+              Sign up
             </button>
           </div>
           <div className="text-center mb-6">
@@ -107,7 +134,7 @@ export default function Home() {
             </button>
           </div>
           <div className="text-center">
-            <p className="text-gray-600 text-sm font-medium">Already have an account? <a href="#" className="text-blue-500 hover:text-blue-700">Sign in</a></p>
+            <p className="text-gray-600 text-sm font-medium">Already have an account? <a href="/login" className="text-blue-500 hover:text-blue-700">Sign in</a></p>
           </div>
         </form>
       </div>
