@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import LoadingSpinner from "../components/LoadingSpinner";
 
 
 export default function Dashboard() {
 
     const [location, setLocation] = useState({});
     const [userName, setUserName] = useState("");
+    const [queryOutput, setQueryOutput] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [userInput, setUserInput] = useState('');
+    const [imageUpload, setImageUpload] = useState(null);
     
+
     // location api
     useEffect(() => {
         if (localStorage.getItem("location") === '{}' || localStorage.getItem("location") === null){
@@ -30,8 +36,8 @@ export default function Dashboard() {
             setLocation(JSON.parse(localStorage.getItem("location")));
     }, [])
 
+    // get the user full name
     useEffect(() => {
-        console.log(localStorage.getItem("username"))  
         if (localStorage.getItem("username") === null || localStorage.getItem("username") === "") {
             const user_id = localStorage.getItem("user_id")
             console.log(user_id)
@@ -59,6 +65,63 @@ export default function Dashboard() {
             setUserName(username)
         }
     }, [])
+
+
+    // below code is for query api
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            sendInput();
+        }
+    };
+
+    const handleClick = (event) => {
+        event.preventDefault(); // Prevents the default action
+        sendInput();
+    };
+
+
+    const sendInput = () => {
+        if (userInput.trim() === '' && !imageUpload) {
+            alert('Please enter some text or upload an image.');
+            return;
+        }
+        console.log(userInput)
+
+        // this formData will be helpfull in with image
+        // const formData = new FormData();
+        // formData.append('userInput', userInput);
+        // if (imageUpload) {
+        //     formData.append('imageUpload', imageUpload);
+        // }
+
+        
+        // start the loader
+        setLoading(true);
+
+        // fetch the data
+        fetch(`http://3.110.175.181/query/${userInput}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+            if (response.status === 200){
+                return response.json()
+            }
+        })
+        .then((data) => {
+            setQueryOutput(data.response)
+            setLoading(false);
+            setUserInput('');
+            setImageUpload(null);
+        })
+        .catch((error) => {
+            setLoading(false);
+            console.error('Error:', error);
+        });
+    };
 
     return (
         <div className="bg-gray-100">
@@ -118,29 +181,43 @@ export default function Dashboard() {
                     {/* <!-- Input area with image upload and send button --> */}
                     <div className="bg-blue-100 p-6 rounded-lg space-y-2">
                         <p className="font-bold text-gray-700">What's on your mind?</p>
-                        <p className="text-sm text-gray-500">Example: How do Proteosome Inhibitors function in the treatment of
-                            Multiple Myeloma?</p>
+                        <p className="text-sm text-gray-500">Example: How do Proteosome Inhibitors function in the treatment of Multiple Myeloma?</p>
                         <div className="flex items-center space-x-2 mt-4">
                             <input
                                 id="userInput"
+                                value={userInput}
+                                onChange={(e) => setUserInput(e.target.value)}
+                                onKeyDown={handleKeyDown}
                                 placeholder="Enter your question here"
                                 className="w-full p-3 border border-gray-300 rounded-lg mt-2"/>
                             <input
-                                type="file"
                                 id="imageUpload"
+                                type="file"
+                                onChange={(e) => setImageUpload(e.target.files[0])}
                                 className="hidden"/>
                                 <label
                                     htmlFor="imageUpload"
                                 className="cursor-pointer bg-white text-gray-600 py-2 px-4 rounded border border-gray-300">Upload Image</label>
                             <button
                                 id="sendButton"
-                                className="bg-blue-500 text-white px-4 py-2 rounded-lg">
+                                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+                                onClick={handleClick}
+                                >
                                 Send
                             </button>
                         </div>
 
                         <p className="text-xs text-red-500 mt-2">**We're refining image interpretation for optimal performance.</p>
                     </div>
+
+                    {/* output the query api */}
+                    {loading ? (
+                        <LoadingSpinner />
+                    ) : ( queryOutput && 
+                        <div className="bg-blue-100 p-6 rounded-lg space-y-2">
+                            <p>{queryOutput}</p>
+                        </div>
+                    )}
 
                     {/* <!-- Cards area --> */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
@@ -187,74 +264,46 @@ export default function Dashboard() {
         </div>
     );
 }
-        {/* < !--JavaScript -->
-        <script>
-            document.getElementById("userInput").addEventListener("keydown", function (event) {
-                if (event.key === "Enter" && !event.shiftKey) {
-                event.preventDefault();
-            sendInput();
-                } else if (event.key === "Enter" && event.shiftKey) {
-                // Allow newline
-            }
-            });
+        // <script>
+        //     document.getElementById("userInput").addEventListener("keydown", function (event) {
+        //         if (event.key === "Enter" && !event.shiftKey) {
+        //         event.preventDefault();
+        //     sendInput();
+        //         } else if (event.key === "Enter" && event.shiftKey) {
+        //         // Allow newline
+        //     }
+        //     });
 
-            document.getElementById("sendButton").addEventListener("click", sendInput);
+        //     document.getElementById("sendButton").addEventListener("click", sendInput);
 
-            function sendInput() {
-                let userInput = document.getElementById("userInput").value;
-            let imageUpload = document.getElementById("imageUpload").files[0];
+        //     function sendInput() {
+        //         let userInput = document.getElementById("userInput").value;
+        //     let imageUpload = document.getElementById("imageUpload").files[0];
 
-            if (userInput.trim() === "" && !imageUpload) {
-                alert("Please enter some text or upload an image.");
-            return;
-                }
+        //     if (userInput.trim() === "" && !imageUpload) {
+        //         alert("Please enter some text or upload an image.");
+        //     return;
+        //         }
 
-            let formData = new FormData();
-            formData.append("userInput", userInput);
-            if (imageUpload) {
-                formData.append("imageUpload", imageUpload);
-                }
+        //     let formData = new FormData();
+        //     formData.append("userInput", userInput);
+        //     if (imageUpload) {
+        //         formData.append("imageUpload", imageUpload);
+        //         }
 
-            // Replace with actual backend URL
-            fetch("https://your-backend-url.com/submit", {
-                method: "POST",
-            body: formData
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                alert("Submitted successfully!");
-            document.getElementById("userInput").value = "";
-            document.getElementById("imageUpload").value = null;
-                    })
-                    .catch(error => {
-                console.error("Error:", error);
-                    });
-            }
-        </script> 
-        
-
-        # location api
-        const [location, setLocation] = useState({});
-	useEffect(() => {
-		if (localStorage.getItem("location") === null)
-			axios.get('https://ipapi.co/json/').then((response) => {
-				let data = response.data;
-				localStorage.setItem('location', JSON.stringify({
-					countryName: data.country_name,
-					countryCode: data.country_calling_code
-				}));
-				setLocation({
-					countryName: data.country_name,
-					countryCode: data.country_calling_code
-				});
-			}).catch((error) => {
-				console.log(error);
-			});
-		else
-			setLocation(JSON.parse(localStorage.getItem("location")));
-	}, [])
-        
-        
-        
-        
-        */}
+        //     // Replace with actual backend URL
+        //     fetch("https://your-backend-url.com/submit", {
+        //         method: "POST",
+        //     body: formData
+        //         })
+        //             .then(response => response.json())
+        //             .then(data => {
+        //         alert("Submitted successfully!");
+        //     document.getElementById("userInput").value = "";
+        //     document.getElementById("imageUpload").value = null;
+        //             })
+        //             .catch(error => {
+        //         console.error("Error:", error);
+        //             });
+        //     }
+        // </script> 
