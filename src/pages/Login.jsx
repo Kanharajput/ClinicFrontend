@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function Login() {
@@ -7,6 +7,7 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
+    const navigate = useNavigate()
 
     const validateEmail = (email) => {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -63,6 +64,8 @@ export default function Login() {
                   localStorage.setItem("access_token", data.access_token)
                   localStorage.setItem("refresh_token", data.refresh_token)
                   localStorage.setItem("user_id", data.user_id)
+                  // redirect it to the user details page
+                  navigate('/dashboard');
               })
 
               // if any then fails it catch it here

@@ -1,6 +1,5 @@
-// import { Link } from "react-router-dom";
-
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Registration() {
   const api_url = process.env.api_url;
@@ -8,7 +7,8 @@ export default function Registration() {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
+  const navigate = useNavigate();
+  
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
@@ -61,6 +61,9 @@ export default function Registration() {
           localStorage.setItem("access_token",data.access_token)
           localStorage.setItem("refresh_token", data.refresh_token)
           localStorage.setItem("user_id", data.id)
+
+          // redirect it to the user details page
+          navigate('/user-details');
         })
         
         // if any then fails it catch it here

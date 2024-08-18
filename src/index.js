@@ -20,7 +20,7 @@ export default function Website() {
       <Routes>
           <Route path="/" element={<Registration />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/user_details" element={<UserDetails />} />
+          <Route path="/user-details" element={<UserDetails />} />
           <Route path="/terms-conditions" element={<Terms />} />
       </Routes>
       <Layout>
