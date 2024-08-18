@@ -22,73 +22,8 @@ const History = ({ onNext }) => {
     };
 
     return (
-
         <div className="bg-gray-100">
-            <div className="flex min-h-screen">
-
-        {/* <!-- Sidebar --> */}
-        <div className="bg-white w-64 p-6 flex flex-col space-y-4 shadow-lg">
-            {/* <!-- Logo and title --> */}
-            <div className="flex items-center space-x-2">
-                <img src="/mnt/data/Body.png" alt="Logo" className="w-8 h-8" />
-                <span className="text-xl font-bold">NeuroLAB AI</span>
-            </div>
-            <hr />
-            {/* <!-- Navigation --> */}
-            <nav className="mt-6 flex-1">
-                <ul className="space-y-4">
-                    <li>
-                        <a href="#" className="flex items-center space-x-2 py-2 px-4 text-blue-600 bg-blue-100 rounded-lg">
-                            <span>🏠</span> <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center space-x-2 py-2 px-4 text-blue-600 bg-blue-100 rounded-lg">
-                            <span>🔬</span> <span>Diagnose</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-600">
-                            <span>💻</span> <span>Clinical Case Simulation</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-600">
-                            <span>💊</span> <span>PharmacEASY</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-600">
-                            <span>🔍</span> <span>Research</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-600">
-                            <span>🛋️</span> <span>Doctor's Lounge</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-600">
-                            <span>📝</span> <span>Contribute</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-600">
-                            <span>💬</span> <span>Expert Advice</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            {/* <!-- User profile --> */}
-            <div className="mt-auto flex items-center space-x-2">
-                <img src="Avatar.png" alt="User" className="w-10 h-10 rounded-full" />
-                <div>
-                    <p className="font-semibold">Dr. Shiv</p>
-                    <p className="text-sm text-gray-500">New Delhi, India</p>
-                </div>
-            </div>
-        </div>
-
+        <div className="flex min-h-screen">
         {/* <!-- Main Content --> */}
         <div className="flex-1 p-8 space-y-8">
 
@@ -151,9 +86,8 @@ const History = ({ onNext }) => {
                             onChange={(e) => setSymptoms(e.target.value)}
                             ></textarea>
                     </div>
-
-                    <div className="text-right">
-                        <button className="bg-blue-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 focus:ring focus:ring-blue-200" onClick={handleContinue}>Continue</button>
+                    <div className="flex text-right">
+                        <button className="bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-700 focus:ring focus:ring-blue-200 p-3" onClick={handleContinue}>Continue</button>
                     </div>
                 </form>
             </div>

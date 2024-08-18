@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
     return (
         <div className="flex">
             <Slider />
-            <div className="">
+            <div className="flex-1">
                 {children}
             </div>
         </div>

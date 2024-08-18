@@ -12,42 +12,6 @@ const DifferentialOutput = () => {
     return (
         <div className="bg-gray-100">
             <div className="flex flex-col md:flex-row h-screen">
-                {/* <!-- Sidebar --> */}
-                <div className="bg-white w-64 p-6 flex flex-col space-y-4 shadow-md">
-                    {/* <!-- Logo and title --> */}
-                    <div className="flex items-center space-x-2">
-                        <img src="Group 39512.png" alt="Logo" className="w-8 h-8" />
-                            <span className="text-xl font-bold">NeuroLAB AI</span>
-                    </div>
-                    <hr />
-                        {/* <!-- Navigation --> */}
-                        <nav className="mt-6 flex-1">
-                            <ul className="space-y-4">
-                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <li><a href="#" className="flex items-center text-white-500 font-bold"><span
-                                        className="mr-2">🏠</span>Dashboard</a>
-                                    </li>
-                                </button>
-                                <li><a href="#" className="flex items-center"><span className="mr-2">🔬</span>Diagnose</a></li>
-                                <li><a href="#" className="flex items-center"><span className="mr-2">💻</span>Clinical Case Simulation</a>
-                                </li>
-                                <li><a href="#" className="flex items-center"><span className="mr-2">💊</span>PharmacEASY</a></li>
-                                <li><a href="#" className="flex items-center"><span className="mr-2">🔍</span>Research</a></li>
-                                <li><a href="#" className="flex items-center"><span className="mr-2">🛋️</span>Doctor's Lounge</a></li>
-                                <li><a href="#" className="flex items-center"><span className="mr-2">📝</span>Contribute</a></li>
-                                <li><a href="#" className="flex items-center"><span className="mr-2">💬</span>Expert Advice</a></li>
-                            </ul>
-                        </nav>
-                        {/* <!-- User profile --> */}
-                        <div className="mt-auto flex items-center space-x-2">
-                            <img src="Avatar.png" alt="User" className="w-10 h-10 rounded-full" />
-                                <div>
-                                    <p className="font-semibold">Dr. Shiv</p>
-                                    <p className="text-sm text-gray-500">New Delhi, India</p>
-                                </div>
-                        </div>
-                </div>
-
                 {/* <!-- Main Content --> */}
                 <div className="flex-1 p-4">
                     {/* <!-- Header --> */}

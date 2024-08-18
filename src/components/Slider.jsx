@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Slider = () => {
     const [location, setLocation] = useState({});
@@ -58,33 +59,67 @@ const Slider = () => {
     }, [])
 
     return (
-        <div className="fixed top-0 left-0 h-screen bg-white w-72 p-8 flex flex-col space-y-4 shadow-md">
-            <div className="flex items-center space-x-2">
-                <span className="text-xl font-bold">NeuroLAB AI</span>
-            </div>
-            <hr />
-            <nav className="mt-6 flex-1">
-                <ul className="space-y-4">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <div className='bg-gray-100'>
+            <div className="fixed top-0 left-0 h-screen bg-white w-72 p-8 flex flex-col space-y-4 shadow-md">
+                <div className="flex items-center space-x-2">
+                    <span className="text-xl font-bold">NeuroLAB AI</span>
+                </div>
+                <hr />
+                <nav className="mt-6 flex-1">
+                    <ul className="space-y-4">
                         <li>
-                            <a href="#" className="flex items-center text-white-500 font-bold">
+                            <NavLink
+                                to="/dashboard"
+                                className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"
+                                style={({ isActive }) =>
+                                    isActive
+                                        ? { backgroundColor: 'rgb(59 130 246)', color: 'white' }
+                                        : undefined
+                                }
+                            >
                                 <span className="mr-2">🏠</span>Dashboard
-                            </a>
+                            </NavLink>
                         </li>
-                    </button>
-                    <li><a href="#" className="flex items-center"><span className="mr-2">🔬</span>Diagnose</a></li>
-                    <li><a href="#" className="flex items-center"><span className="mr-2">💻</span>Clinical Case Simulation</a></li>
-                    <li><a href="#" className="flex items-center"><span className="mr-2">💊</span>PharmacEASY</a></li>
-                    <li><a href="#" className="flex items-center"><span className="mr-2">🔍</span>Research</a></li>
-                    <li><a href="#" className="flex items-center"><span className="mr-2">🛋️</span>Doctor's Lounge</a></li>
-                    <li><a href="#" className="flex items-center"><span className="mr-2">📝</span>Contribute</a></li>
-                    <li><a href="#" className="flex items-center"><span className="mr-2">💬</span>Expert Advice</a></li>
-                </ul>
-            </nav>
-            <div className="mt-auto flex items-center space-x-2">
-                <div>
-                    <p className="font-semibold">Dr. {userName}</p>
-                    <p className="text-sm text-gray-500">{location.countryCapital}, {location.countryName}</p>
+                        <li>
+                            <NavLink
+                                to="/differential"
+                                className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"
+                                style={({ isActive }) =>
+                                    isActive
+                                        ? { backgroundColor: 'rgb(59 130 246)', color: 'white' }
+                                        : undefined
+                                }
+                            >
+                                <span className="mr-2">🔬</span>Diagnose
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/case-simulation-dashboard"
+                                className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"
+                                style={({ isActive }) =>
+                                    isActive
+                                        ? { backgroundColor: 'rgb(59 130 246)', color: 'white' }
+                                        : undefined
+                                }
+                            >
+                                <span className="mr-2">💻</span>Clinical Case Simulation
+                            </NavLink>
+                        </li>
+
+                        {/* later covert this into NavLink */}
+                        <li><a href="#" className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"><span className="mr-2">💊</span>PharmacEASY</a></li>
+                        <li><a href="#" className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"><span className="mr-2">🔍</span>Research</a></li>
+                        <li><a href="#" className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"><span className="mr-2">🛋️</span>Doctor's Lounge</a></li>
+                        <li><a href="#" className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"><span className="mr-2">📝</span>Contribute</a></li>
+                        <li><a href="#" className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"><span className="mr-2">💬</span>Expert Advice</a></li>
+                    </ul>
+                </nav>
+                <div className="mt-auto flex items-center space-x-2">
+                    <div>
+                        <p className="font-semibold">Dr. {userName}</p>
+                        <p className="text-sm text-gray-500">{location.countryCapital}, {location.countryName}</p>
+                    </div>
                 </div>
             </div>
         </div>

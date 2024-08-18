@@ -3,41 +3,6 @@ const CashSimulation = () => {
     return (
         <div class="bg-gray-100">
             <div class="flex min-h-screen">
-                {/* <!-- Sidebar --> */}
-                <div class="bg-white w-64 p-6 flex flex-col space-y-4 shadow-md">
-                    {/* <!-- Logo and title --> */}
-                    <div class="flex items-center space-x-2">
-                        <img src="Group 39512.png" alt="Logo" class="w-8 h-8" /> 
-                            <span class="text-xl font-bold">NeuroLAB AI</span>
-                    </div>
-                    <hr />
-                        {/* <!-- Navigation --> */}
-                        <nav class="mt-6 flex-1">
-                            <ul class="space-y-4">
-                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <li><a href="#" class="flex items-center text-white-500 font-bold"><span
-                                        class="mr-2">🏠</span>Dashboard</a>
-                                    </li>
-                                </button>
-                                <li><a href="#" class="flex items-center"><span class="mr-2">🔬</span>Diagnose</a></li>
-                                <li><a href="#" class="flex items-center"><span class="mr-2">💻</span>Clinical Case Simulation</a>
-                                </li>
-                                <li><a href="#" class="flex items-center"><span class="mr-2">💊</span>PharmacEASY</a></li>
-                                <li><a href="#" class="flex items-center"><span class="mr-2">🔍</span>Research</a></li>
-                                <li><a href="#" class="flex items-center"><span class="mr-2">🛋️</span>Doctor's Lounge</a></li>
-                                <li><a href="#" class="flex items-center"><span class="mr-2">📝</span>Contribute</a></li>
-                                <li><a href="#" class="flex items-center"><span class="mr-2">💬</span>Expert Advice</a></li>
-                            </ul>
-                        </nav>
-                        {/* <!-- User profile --> */}
-                        <div class="mt-auto flex items-center space-x-2">
-                            <img src="Avatar.png" alt="User" class="w-10 h-10 rounded-full" /> 
-                                <div>
-                                    <p class="font-semibold">Dr. Shiv</p>
-                                    <p class="text-sm text-gray-500">New Delhi, India</p>
-                                </div>
-                        </div>
-                </div>
                 {/* <!-- Main Content --> */}
                 <div class="flex-1 p-8">
                     <header class="flex items-center justify-between">
