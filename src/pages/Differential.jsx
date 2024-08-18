@@ -14,7 +14,6 @@ const Differential = () => {
     const [loading, setLoading] = useState(false);
 
     const handleNext = (data) => {
-        console.log(data)
         const current_query = completeQuery;
         const new_query = current_query.concat(" ", data);
         setCompleteQuery(new_query)

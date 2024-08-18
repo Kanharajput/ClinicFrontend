@@ -4,8 +4,11 @@ import { useLocation } from 'react-router-dom';
 const DifferentialOutput = () => {
     const location = useLocation();
     const { data } = location.state || {};
+    const response = data["response"]
+    const normalCauses = response["Normal Causes"]
+    const mustNotMiss = response["Must Not Miss"]
+    const rareDiagnoses = response["Rare Diagnoses"]
 
-    console.log(data)
     return (
         <div className="bg-gray-100">
             <div className="flex flex-col md:flex-row h-screen">
@@ -80,14 +83,7 @@ const DifferentialOutput = () => {
                                     Here are the possible diagnoses for the case:
                                 </p>
                                 <div className="mt-4">
-                                    <h4 className="font-semibold">Viral Upper Respiratory Infection (URI)</h4>
-                                    <p className="text-gray-600 mt-2">Rationale</p>
-                                    <p className="text-gray-500 text-sm mt-1">A common cause of fever in young children, especially
-                                        given the short duration of symptoms. Usually associated with other symptoms such as a runny
-                                        nose, cough, and sore throat.</p>
-                                    <p className="text-gray-600 mt-2">Additional Diagnostics</p>
-                                    <p className="text-gray-500 text-sm mt-1">Clinical evaluation; supportive care with symptomatic
-                                        treatment; consider a respiratory viral panel if symptoms persist or worsen.</p>
+                                    <p className="text-gray-500 text-sm mt-1">{normalCauses}</p>
                                 </div>
                         </div>
 
@@ -99,14 +95,7 @@ const DifferentialOutput = () => {
                                     Essential conditions that must be ruled out or addressed urgently.
                                 </p>
                                 <div className="mt-4">
-                                    <h4 className="font-semibold">Sepsis</h4>
-                                    <p className="text-gray-600 mt-2">Rationale</p>
-                                    <p className="text-gray-500 text-sm mt-1">A life-threatening condition that must be considered in
-                                        any febrile child due to the rapid progression and high morbidity and mortality if
-                                        untreated.</p>
-                                    <p className="text-gray-600 mt-2">Additional Diagnostics</p>
-                                    <p className="text-gray-500 text-sm mt-1">Blood cultures, complete blood count (CBC), and possibly
-                                        lumbar puncture if clinically indicated for meningitis evaluation.</p>
+                                    <p className="text-gray-500 text-sm mt-1">{mustNotMiss}</p>
                                 </div>
                         </div>
 
@@ -118,13 +107,9 @@ const DifferentialOutput = () => {
                                     Here are possible rare diagnoses for the case:
                                 </p>
                                 <div className="mt-4">
-                                    <h4 className="font-semibold">Juvenile Idiopathic Arthritis (JIA)</h4>
-                                    <p className="text-gray-600 mt-2">Rationale</p>
-                                    <p className="text-gray-500 text-sm mt-1">Although rare, a subset of JIA can present initially with
-                                        systemic symptoms including fever before the onset of joint symptoms.</p>
-                                    <p className="text-gray-600 mt-2">Additional Diagnostics</p>
-                                    <p className="text-gray-500 text-sm mt-1">Rheumatologic panel including ANA, RF, and ESR; imaging of
-                                        joints if arthritis is suspected in the future.</p>
+                                <div className="mt-4">
+                                    <p className="text-gray-500 text-sm mt-1">{rareDiagnoses}</p>
+                                </div>
                                 </div>
                         </div>
                     </div>
