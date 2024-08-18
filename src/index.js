@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import UserDetails from "./pages/UserDetails";
@@ -21,6 +22,9 @@ export default function Website() {
           <Route path="/login" element={<Login />} />
           <Route path="/user_details" element={<UserDetails />} />
           <Route path="/terms-conditions" element={<Terms />} />
+      </Routes>
+      <Layout>
+        <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/differential" element={<Differential />} />
           <Route path="/differential-output" element={<DifferentialOutput />} />
@@ -28,6 +32,7 @@ export default function Website() {
           <Route path="/case-simulation" element={<CaseSimulation />} />
           <Route path="*" element={<NoPage />} />
       </Routes>
+    </Layout>
     </BrowserRouter>
   );
 }

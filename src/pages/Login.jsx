@@ -62,7 +62,7 @@ export default function Login() {
                   console.log(data);      // Handle the parsed JSON data
                   localStorage.setItem("access_token", data.access_token)
                   localStorage.setItem("refresh_token", data.refresh_token)
-                  localStorage.setItem("user_id", data.id)
+                  localStorage.setItem("user_id", data.user_id)
               })
 
               // if any then fails it catch it here
