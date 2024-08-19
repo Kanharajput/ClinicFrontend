@@ -44,7 +44,7 @@ const History = ({ onNext }) => {
                         <span className="material-icons mr-2">info</span>
                         Quick DDX: Don't have time to fill out all of the fields? Describe some of the key information
                         instead.
-                        <a href="#" className="text-blue-600 ml-auto">Try quick DDX</a>
+                        <a href="/quick_ddsx" className="text-blue-600 ml-auto underline underline-offset-4 hover:underline"> Try quick DDX</a>
                     </p>
                 </div>
 

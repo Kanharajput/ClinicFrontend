@@ -10,6 +10,7 @@ import Differential from "./pages/Differential";
 import DifferentialOutput from "./pages/DifferentialOutput";
 import CaseSimulation from "./pages/CaseSimulation";
 import CashSimulationDash from "./pages/CashSimulationDash";
+import QuickDDsx from "./pages/QuickDDsx";
 import NoPage from "./pages/NoPage";
 import "./index.css";          // import it to import the tailwind css
 
@@ -29,6 +30,7 @@ export default function Website() {
           <Route path="/differential-output" element={<DifferentialOutput />} />
           <Route path="/case-simulation-dashboard" element={<CashSimulationDash />} />
           <Route path="/case-simulation" element={<CaseSimulation />} />
+          <Route path="/quick_ddsx" element={<QuickDDsx />} />
           <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
