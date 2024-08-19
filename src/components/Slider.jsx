@@ -33,7 +33,6 @@ const Slider = () => {
     useEffect(() => {
         if (localStorage.getItem("username") === null || localStorage.getItem("username") === "") {
             const user_id = localStorage.getItem("user_id")
-            console.log(user_id)
             fetch(`http://3.110.175.181:8080/get-full-name/${user_id}`, {
                 method: 'GET',
                 headers: {
