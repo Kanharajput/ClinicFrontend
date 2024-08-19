@@ -1,16 +1,59 @@
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
+
 
 const CashSimulationDash = () => {
+
+    const [userName, setUserName] = useState("");
+    const navigate = useNavigate()
+
+
+    useEffect(() => {
+        if (localStorage.getItem("username") === null || localStorage.getItem("username") === "") {
+            const user_id = localStorage.getItem("user_id")
+            console.log(user_id)
+            fetch(`http://3.110.175.181/get-full-name/1`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(
+                    response => {
+                        if (response.status == 200) {
+                            return response.json()
+                        }
+                    }
+                )
+                .then(data => {
+                    console.log(data.full_name)
+                    localStorage.setItem("username", data.full_name)
+                    setUserName(data.full_name)
+                })
+        }
+        else {
+            const username = localStorage.getItem("username")
+            setUserName(username)
+        }
+    }, [])
+
+    const handleClick = () =>{
+        // navigate to Case Simulation
+        navigate("/case-simulation")
+    }
+
+
     return (
         <div class="bg-gray-100">
             <div class="flex min-h-screen">
                 {/* <!-- Main Content --> */}
                 <div class="flex-1 p-8">
                     <header class="flex items-center justify-between">
-                        <h1 class="text-2xl font-bold">Hello Dr.Shiv,</h1>
-                        <button class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
+                        <h1 class="text-2xl font-bold">Hello Dr.{userName},</h1>
+                        {/* <button class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
                             <i class="fas fa-coins mr-2"></i>
                             200
-                        </button>
+                        </button> */}
                     </header>
                     <p class="mt-2 text-gray-600">Your patient needs you, Let's rush to the rescue</p>
                     <section class="mt-6 bg-white p-6 rounded-lg shadow-md">
@@ -53,7 +96,7 @@ const CashSimulationDash = () => {
                                     Immunology
                             </button>
                         </div>
-                        <button class="mt-4 w-full py-2 bg-blue-100 text-blue-400 rounded hover:bg-blue-600">Start the Case Study</button>
+                        <button class="mt-4 w-full py-2 bg-blue-100 text-blue-400 rounded hover:bg-blue-600 hover:text-white" onClick={handleClick}>Start the Case Study</button>
                     </section>
                     <section class="mt-6 bg-white p-6 rounded-lg shadow-md">
                         <h2 class="text-xl font-semibold">Achievements</h2>

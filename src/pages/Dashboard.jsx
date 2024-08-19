@@ -111,11 +111,12 @@ export default function Dashboard() {
                             <h1 className="text-2xl font-bold">Hello Dr. {userName}, Welcome!</h1>
                             <p className="text-gray-600 mt-1">Ready to Elevate your Medical Journey?</p>
                         </div>
-                        <div className="flex items-center space-x-4">
+                        {/* score section will create it later */}
+                        {/* <div className="flex items-center space-x-4">
                             <span className="bg-blue-100 text-blue-500 px-3 py-1 rounded-full">Novice</span>
                             <span className="bg-blue-100 text-blue-500 px-3 py-1 rounded-full">200</span>
                             <img src="/mnt/data/notification.png" alt="Notifications" className="w-6 h-6" />
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* <!-- Input area with image upload and send button --> */}

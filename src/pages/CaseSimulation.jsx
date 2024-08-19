@@ -1,4 +1,96 @@
+import { useEffect, useState } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
+
 const CashSimulation = () => {
+
+    const [userName, setUserName] = useState("");
+    const [question, setQuestion] = useState("Enter Hi to get your first Question");
+    const [userResponse, setUserResponse] = useState("")
+    const [answer, setAnswer] = useState("Submit to know your Knowledge")
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = () =>{
+        // start the loader
+        setLoading(true);
+
+        // fetch the data
+        fetch(`http://3.110.175.181/case-simulation?user_input=${userResponse}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json()
+                }
+            })
+            .then((data) => {
+                // start the loader
+                setLoading(false);
+                setAnswer(data["response"])
+            })
+            .catch((error) => {
+                // start the loader
+                setLoading(false);
+                console.error('Error:', error);
+            });
+    }
+
+    const handleNextSkip = () =>{
+        // start the loader
+        setLoading(true);
+
+        // fetch the data
+        fetch(`http://3.110.175.181/case-simulation?user_input=Next Question`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json()
+                }
+            })
+            .then((data) => {
+                setLoading(false)
+                setAnswer(data["response"])
+            })
+            .catch((error) => {
+                setLoading(false)
+                console.error('Error:', error);
+            });
+    }
+  
+    useEffect(() => {
+        if (localStorage.getItem("username") === null || localStorage.getItem("username") === "") {
+            const user_id = localStorage.getItem("user_id")
+            console.log(user_id)
+            fetch(`http://3.110.175.181/get-full-name/1`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(
+                    response => {
+                        if (response.status == 200) {
+                            return response.json()
+                        }
+                    }
+                )
+                .then(data => {
+                    console.log(data.full_name)
+                    localStorage.setItem("username", data.full_name)
+                    setUserName(data.full_name)
+                })
+        }
+        else {
+            const username = localStorage.getItem("username")
+            setUserName(username)
+        }
+    }, [])
 
     return (
         <div class="bg-gray-100">
@@ -6,19 +98,20 @@ const CashSimulation = () => {
                 {/* <!-- Main Content --> */}
                 <div class="flex-1 p-8">
                     <header class="flex items-center justify-between">
-                        <h1 class="text-2xl font-bold">Hello Dr.Shiv,</h1>
-                        <button class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
+                        <h1 class="text-2xl font-bold">Hello Dr.{userName},</h1>
+                        {/* <button class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
                             <i class="fas fa-coins mr-2"></i>
                             200
-                        </button>
+                        </button> */}
                     </header>
                     <p class="mt-2 text-gray-600">Your patient needs you, Lets rush to the rescue</p>
-                    <div class="mt-4 bg-blue-100 p-4 rounded-lg">
+                    {/* later on don't know what's uses */}
+                    {/* <div class="mt-4 bg-blue-100 p-4 rounded-lg">
                         <span class="text-blue-700 font-semibold">75% complete</span>
                         <div class="w-full bg-blue-200 rounded-full h-2.5 mt-2">
                             <div class="bg-blue-500 h-2.5 rounded-full w-3/4"></div>
                         </div>
-                    </div>
+                    </div> */}
                     {/* <section class="mt-6 bg-white p-6 rounded-lg shadow-md">
                         <h2 class="text-xl font-semibold">Case 1 :</h2>
                         <h3 class="text-lg font-semibold mt-4">56 Yr Old Man with Sudden Onset of Severe Chest Pain</h3>
@@ -56,17 +149,29 @@ const CashSimulation = () => {
                         </div>
                     </section> */}
                     <section class="mt-6 bg-white p-6 rounded-lg shadow-md">
-                        <h2 class="text-xl font-semibold">Question 1</h2>
-                        <p class="mt-4">Considering Mr. Verma’s clinical presentation and physical findings, outline your diagnostic strategy and the immediate steps you would take to stabilize the patient. Discuss the rationale for these steps and the key aspects of further management.</p>
-                        <textarea class="w-full mt-4 p-4 bg-gray-50 border rounded-md h-40" placeholder="Write your answer here..."></textarea>
+                        <h2 class="text-xl font-semibold">Question</h2>
+                        <p class="mt-4">{question}</p>
+                        <textarea class="w-full mt-4 p-4 bg-gray-50 border rounded-md h-40" placeholder="Write your answer here..."
+                        value={userResponse}
+                        onChange={(e) => setUserResponse(e.target.value)}
+                        ></textarea>
                         <div class="flex justify-between items-center mt-4">
                             <div class="space-x-2">
                                 <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Previous</button>
-                                <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Next</button>
-                                <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Skip</button>
+                                <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={handleNextSkip}>Next</button>
+                                <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={handleNextSkip}>Skip</button>
                             </div>
-                            <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Submit</button>
+                            <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={handleSubmit}>Submit</button>
                         </div>
+                    </section>
+                    <section class="mt-6 bg-white p-6 rounded-lg shadow-md">
+                        {loading ? (
+                            <LoadingSpinner />
+                        ) : (
+                        <div>
+                            <p>{answer}</p>
+                        </div>
+                        )}
                     </section>
                     <section class="mt-6 bg-white p-6 rounded-lg shadow-md">
                         <h2 class="text-xl font-semibold">Evaluation</h2>
