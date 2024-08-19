@@ -1,12 +1,15 @@
 import React from 'react';
 import Slider from './Slider';
+import { useLocation, Outlet } from 'react-router-dom';
 
-const Layout = ({ children }) => {
+const Layout = () => {
+    const location = useLocation();
+    const noSliderPaths = ['/', '/login', '/user-details', '/terms-conditions'];
     return (
         <div className="flex">
-            <Slider />
+            {!noSliderPaths.includes(location.pathname) && <Slider />}
             <div className="flex-1">
-                {children}
+                {<Outlet />}
             </div>
         </div>
     );

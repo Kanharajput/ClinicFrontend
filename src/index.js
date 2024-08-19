@@ -22,17 +22,16 @@ export default function Website() {
           <Route path="/login" element={<Login />} />
           <Route path="/user-details" element={<UserDetails />} />
           <Route path="/terms-conditions" element={<Terms />} />
-      </Routes>
-      <Layout>
-        <Routes>
+
+      <Route element={<Layout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/differential" element={<Differential />} />
           <Route path="/differential-output" element={<DifferentialOutput />} />
           <Route path="/case-simulation-dashboard" element={<CashSimulationDash />} />
           <Route path="/case-simulation" element={<CaseSimulation />} />
           <Route path="*" element={<NoPage />} />
-      </Routes>
-    </Layout>
+      </Route>
+    </Routes>
     </BrowserRouter>
   );
 }
