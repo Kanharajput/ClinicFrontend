@@ -35,7 +35,7 @@ export default function Login() {
         }
 
         if (isValid) {
-          fetch('http://3.110.175.181/login', {
+          fetch('http://3.110.175.181:8080/login', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',

@@ -30,7 +30,7 @@ const Differential = () => {
         setLoading(true);
 
         // Submit the formData to the API
-        fetch(`http://3.110.175.181/differential-diagonise?question=${completeQuery}`, {
+        fetch(`http://3.110.175.181:8080/differential-diagonise?question=${completeQuery}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

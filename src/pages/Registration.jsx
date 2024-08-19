@@ -36,7 +36,7 @@ export default function Registration() {
 
     if (isValid) {
       // register the user
-      fetch('http://3.110.175.181/registration', {
+      fetch('http://3.110.175.181:8080/registration', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
