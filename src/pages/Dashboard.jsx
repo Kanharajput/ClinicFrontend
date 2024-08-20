@@ -86,7 +86,11 @@ export default function Dashboard() {
             }
         })
         .then((data) => {
-            setQueryOutput(data.response)
+            const queryResponse = data.response
+            // Remove the ```html block
+            const cleanResponse = queryResponse.replace(/```html/g, '').replace(/```/g, '');
+            setQueryOutput(cleanResponse)
+            console.log(cleanResponse)
             setLoading(false);
             setUserInput('');
             setImageUpload(null);
@@ -119,43 +123,43 @@ export default function Dashboard() {
                     </div>
 
                     {/* <!-- Input area with image upload and send button --> */}
-                    <div className="bg-blue-100 p-6 rounded-lg space-y-2">
-                        <p className="font-bold text-gray-700">What's on your mind?</p>
-                        <p className="text-sm text-gray-500">Example: How do Proteosome Inhibitors function in the treatment of Multiple Myeloma?</p>
-                        <div className="flex items-center space-x-2 mt-4">
-                            <input
-                                id="userInput"
+                    <div className="bg-blue-100 p-8 rounded-lg space-y-2 text-center">
+                        <p className="text-xl font-bold text-gray-700">What's on your mind?</p>
+                        <p className="text-sm text-gray-500">Example: How do Proteosome Inhibitors function in the treatment of
+                            Multiple Myeloma?</p>
+
+                        {/* <!-- Container for input and buttons --> */}
+                        <div className="relative flex justify-center pt-8">
+                            {/* <!-- Input Field --> */}
+                            <input id="userInput" placeholder="Enter your question here"
+                                className="w-[70%] p-3 border border-gray-300 rounded-lg"
                                 value={userInput}
                                 onChange={(e) => setUserInput(e.target.value)}
-                                onKeyDown={handleKeyDown}
-                                placeholder="Enter your question here"
-                                className="w-full p-3 border border-gray-300 rounded-lg mt-2"/>
-                            <input
-                                id="imageUpload"
-                                type="file"
-                                onChange={(e) => setImageUpload(e.target.files[0])}
-                                className="hidden"/>
-                                <label
-                                    htmlFor="imageUpload"
-                                className="cursor-pointer bg-white text-gray-600 py-2 px-4 rounded border border-gray-300">Upload Image</label>
-                            <button
-                                id="sendButton"
-                                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-                                onClick={handleClick}
-                                >
-                                Send
+                                onKeyDown={handleKeyDown}/>
+
+                                {/* <!-- Image Upload Button --> */}
+                            <input type="file" id="imageUpload" className="hidden" 
+                                onChange={(e) => setImageUpload(e.target.files[0])} />
+                            <label for="imageUpload"
+                                className="absolute right-[12rem] top-[68%] transform -translate-y-1/2 cursor-pointer">
+                                <img src="#" className="w-6 h-6" />
+                            </label>
+
+                            {/* <!-- Mic Button --> */}
+                            <button id="micButton" className="absolute right-[8.5rem] top-[68%] transform -translate-y-1/2">
+                                <img src="#" />
                             </button>
                         </div>
-
-                        <p className="text-xs text-red-500 mt-2">**We're refining image interpretation for optimal performance.</p>
+                        <p className="text-xs text-red-500 mt-2 absolute right-[12rem] top-[48%] transform -translate-y-1/2">**We're refining image interpretation for optimal performance.</p>
                     </div>
 
                     {/* output the query api */}
                     {loading ? (
                         <LoadingSpinner />
                     ) : ( queryOutput && 
-                        <div className="bg-blue-100 p-6 rounded-lg space-y-2">
-                            <p>{queryOutput}</p>
+                            <div className="bg-blue-100 p-6 rounded-lg space-y-2 dashboard-output">
+                            {/* <p>{queryOutput}</p> */}
+                            <div dangerouslySetInnerHTML={{ __html: queryOutput }} />
                         </div>
                     )}
 
