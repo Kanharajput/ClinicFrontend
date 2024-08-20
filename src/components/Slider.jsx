@@ -2,6 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import dashboardImg from "../assests/img/slider/dashboard.png"
+import diagnoseImg from "../assests/img/slider/diagnose.png"
+import caseImg from "../assests/img/slider/case_sim.png"
+import pharmaImg from "../assests/img/slider/pharma.png"
+import researchImg from "../assests/img/slider/research.png"
+import doctorImg from "../assests/img/slider/doctor.png"
+import expertImg from "../assests/img/slider/expert.png"
+
 
 const Slider = () => {
     const [location, setLocation] = useState({});
@@ -58,62 +66,62 @@ const Slider = () => {
     }, [])
 
     return (
-        <div className='bg-gray-100'>
-            <div className="fixed top-0 left-0 h-screen bg-white w-72 p-8 flex flex-col space-y-4 shadow-md">
+        <div className="bg-gray-100">
+            <div className="fixed top-4 left-4 h-[95%] bg-white w-72 p-8 flex flex-col space-y-1 shadow-md rounded-xl">
                 <div className="flex items-center space-x-2">
-                    <span className="text-xl font-bold">NeuroLAB AI</span>
+                    <span className="text-xl font-bold">NeuroGen</span>
                 </div>
                 <hr />
-                <nav className="mt-6 flex-1">
-                    <ul className="space-y-4">
+                <nav className="pt-4 flex-1">
+                    <ul className="space-y-2">
                         <li>
                             <NavLink
                                 to="/dashboard"
-                                className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"
+                                className="flex items-center text-gray-700 py-2 px-4 rounded hover:bg-blue-500 hover:text-white"
                                 style={({ isActive }) =>
                                     isActive
                                         ? { backgroundColor: 'rgb(59 130 246)', color: 'white' }
                                         : undefined
                                 }
                             >
-                                <span className="mr-2">🏠</span>Dashboard
+                                <img src={dashboardImg} className="mr-2" />Dashboard
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
                                 to="/differential"
-                                className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"
+                                className="flex items-center text-gray-700 py-2 px-4 rounded hover:bg-blue-500 hover:text-white"
                                 style={({ isActive }) =>
                                     isActive
                                         ? { backgroundColor: 'rgb(59 130 246)', color: 'white' }
                                         : undefined
                                 }
                             >
-                                <span className="mr-2">🔬</span>Diagnose
+                                <img src={diagnoseImg} className="mr-2" />Diagnose
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
                                 to="/case-simulation-dashboard"
-                                className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"
+                                className="flex items-center text-gray-700 py-2 px-4 rounded hover:bg-blue-500 hover:text-white"
                                 style={({ isActive }) =>
                                     isActive
                                         ? { backgroundColor: 'rgb(59 130 246)', color: 'white' }
                                         : undefined
                                 }
                             >
-                                <span className="mr-2">💻</span>Clinical Case Simulation
+                                <img src={caseImg} className="mr-2" />Clinical Case Simulation
                             </NavLink>
                         </li>
 
                         {/* later covert this into NavLink */}
-                        <li><a href="#" className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"><span className="mr-2">💊</span>PharmacEASY</a></li>
-                        <li><a href="#" className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"><span className="mr-2">🔍</span>Research</a></li>
-                        <li><a href="#" className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"><span className="mr-2">🛋️</span>Doctor's Lounge</a></li>
-                        <li><a href="#" className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"><span className="mr-2">📝</span>Contribute</a></li>
-                        <li><a href="#" className="flex items-center text-black py-2 px-4 rounded hover:bg-blue-500"><span className="mr-2">💬</span>Expert Advice</a></li>
+                        <li><a href="#" className="flex items-center text-gray-700 py-2 px-4 rounded hover:bg-blue-500 hover:text-white"><img src={pharmaImg} className="mr-2" />PharmacEASY</a></li>
+                        <li><a href="#" className="flex items-center text-gray-700 py-2 px-4 rounded hover:bg-blue-500 hover:text-white"><img src={researchImg} className="mr-2" />Research</a></li>
+                        <li><a href="#" className="flex items-center text-gray-700 py-2 px-4 rounded hover:bg-blue-500 hover:text-white"><img src={doctorImg} className="mr-2" />Doctor's Lounge</a></li>
+                        <li><a href="#" className="flex items-center text-gray-700 py-2 px-4 rounded hover:bg-blue-500 hover:text-white"><img src={expertImg} className="mr-2" />Expert Advice</a></li>
                     </ul>
                 </nav>
+                <hr />
                 <div className="mt-auto flex items-center space-x-2">
                     <div>
                         <p className="font-semibold">Dr. {userName}</p>
