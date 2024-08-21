@@ -37,3 +37,15 @@ code {
   cursor: pointer;
   margin-right:20px;
 }
+
+.differential-output h4{
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  margin-bottom:12px;
+}
+
+.differential-output p{
+  margin-bottom:10px;
+  font-weight:300;
+}

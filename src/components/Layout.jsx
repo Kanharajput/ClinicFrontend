@@ -8,7 +8,7 @@ const Layout = () => {
     return (
         <div className="flex bg-gray-100">
             {!noSliderPaths.includes(location.pathname) && <Slider />}
-            <div className="ml-72 flex-1">
+            <div className="ml-72 flex-1 bg-gray-100">
                 {<Outlet />}
             </div>
         </div>

@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import History from '../components/differentials/History';
 import CaseInformation from '../components/differentials/CaseInformation';
 import Objective from '../components/differentials/Objective';
-import { useNavigate } from 'react-router-dom';
-import LoadingSpinner from '../components/LoadingSpinner';
+import DifferentialOutput from './DifferentialOutput';
 
 
 const Differential = () => {
 
-    const navigate = useNavigate();
     const [completeQuery, setCompleteQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
-    const [loading, setLoading] = useState(false);
 
     const handleNext = (data) => {
         const current_query = completeQuery;
@@ -20,50 +17,14 @@ const Differential = () => {
         setCurrentPage(currentPage + 1);
     };
 
-    useEffect(() => {
-        console.log("Updated completeQuery:", completeQuery);
-    }, [completeQuery]);
-
-
-    const handleSubmit = () => {
-        // start the loader
-        setLoading(true);
-
-        // Submit the formData to the API
-        fetch(`http://localhost:8000/differential-diagonise?question=${completeQuery}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-            .then(response => {
-                if (response.status === 200){
-                    return response.json()
-                }
-            })
-            .then(response_data => {
-                // stop the loader
-                setLoading(false);
-                navigate('/differential-output', { state: { data: response_data } });
-            })
-            .catch((error) => {
-                setLoading(false);
-                console.error('Error:', error);
-            });
-    };
 
     return (
         
         <div>
-            {loading ? (
-                <LoadingSpinner />
-            ) : (
-                <>
-                    {currentPage === 1 && <History onNext={handleNext} />}
-                    {currentPage === 2 && <CaseInformation onNext={handleNext} />}
-                    {currentPage === 3 && <Objective onNext={handleNext} onSubmit={handleSubmit} />}
-                </>
-            )}
+            {currentPage === 1 && <History onNext={handleNext} />}
+            {currentPage === 2 && <CaseInformation onNext={handleNext} />}
+            {currentPage === 3 && <Objective onNext={handleNext}/>}
+            {currentPage === 4 && <DifferentialOutput completeQuery={completeQuery}/>}
         </div>
     );
 };

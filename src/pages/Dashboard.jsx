@@ -4,6 +4,8 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import micImage from "../assests/img/dashboard/mic.png"
 import uploadImage from "../assests/img/dashboard/upload.png"
 import achievementImage from "../assests/img/dashboard/achievement.png"
+import scoreImg from "../assests/img/dashboard/score.png"
+import timelineImg from "../assests/img/dashboard/timeline.png"
 import arrowDownImage from "../assests/img/dashboard/arrow_down.png"
 import arrowRightImage from "../assests/img/dashboard/arrow_right.png"
 import arrowUpImage from "../assests/img/dashboard/arrow_up.png"
@@ -122,10 +124,18 @@ export default function Dashboard() {
                         <p className="text-gray-600 mt-1">Ready to Elevate your Medical Journey?</p>
                     </div>
                     {/* score section */}
-                    <div className="flex items-center space-x-4">
-                        <span className="bg-blue-100 text-blue-500 px-3 py-1 rounded-full">Earned the <bold>'Novice'</bold> badge</span>
-                        <span className="bg-blue-100 text-blue-500 px-3 py-1 rounded-full">200</span>
-                        <img src="/mnt/data/notification.png" alt="Notifications" className="w-6 h-6" />
+                    <div className="flex">
+                        <div className="flex items-center bg-blue-100 p-4 rounded-2xl">
+                            <img src={achievementImage} />
+                            <span className="ml-2">Earned the <strong>'Novice'</strong> badge.</span>
+                            <div className="flex bg-blue-400 ml-6 rounded-full py-1 px-2">
+                                <img src={scoreImg} className="w-auto h-[20px]"/>
+                                <span className="ml-2 text-white">200</span>
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-center ml-6 bg-blue-100 py-2 px-4 rounded-2xl">
+                            <img src={timelineImg} />
+                        </div>
                     </div>
                 </div>
 
@@ -157,7 +167,7 @@ export default function Dashboard() {
                             <img src={micImage} />
                         </button>
                     </div>
-                    <p className="text-xs text-red-500 mt-2 absolute right-[14rem] top-[52%] transform -translate-y-1/2">**We're refining image interpretation for optimal performance.</p>
+                    <p className="text-xs text-red-500 mt-2 absolute right-[14rem] top-[53%] transform -translate-y-1/2">**We're refining image interpretation for optimal performance.</p>
                 </div>
 
                 {/* output the query api */}
@@ -192,10 +202,10 @@ export default function Dashboard() {
                         <div>
                             <h2 className="text-xl font-bold leading-9">Case Of The Day</h2>
                             <p className="text-gray-900 w-[90%]">Lorem ipsum dolor sit amet consectetur. Diam elementum sed etiam ultrices aliquet eu.sit amet consectetur. Diam elementum sed etiam sit amet consectetur. Diam elementum sed etiam </p>
-                            <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">View Case</button>
+                            <button className="mt-4 bg-blue-500 text-white px-8 py-2 rounded-lg hover:bg-blue-700">View Case</button>
                         </div>
                         <div className="flex align-center">
-                            <img src={caseImage} alt="Differential Diagnosis" className="float-right"/>
+                            <img src={caseImage} alt="Differential Diagnosis" className="float-right w-[800px]" />
                         </div>
                     </div>
                 </div>
@@ -212,7 +222,7 @@ export default function Dashboard() {
                             <p className="text-gray-700">Master Pharmacology the Smarter Way.</p>
                         </div>
                         <div>
-                            <button className="mt-4 bg-black text-white px-4 py-2 rounded-lg">Get Started Today!!</button>
+                            <button className="mt-4 bg-black text-white px-4 py-2 rounded-lg text-sm">Get Started Today!!</button>
                         </div>
                     </div>
                 </div>

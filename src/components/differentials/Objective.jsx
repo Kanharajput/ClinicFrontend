@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Objective = ({onNext, onSubmit }) => {
+const Objective = ({onNext }) => {
     const [vitals, setVitals] = useState('');
     const [labResults, setLabResults] = useState('');
     const [examFinding, setExamFinding] = useState('');
@@ -14,7 +14,6 @@ const Objective = ({onNext, onSubmit }) => {
 
         // pass it to the differential main page
         onNext(objective);
-        onSubmit();
     };
 
     return (
