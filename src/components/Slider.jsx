@@ -41,7 +41,7 @@ const Slider = () => {
     useEffect(() => {
         if (localStorage.getItem("username") === null || localStorage.getItem("username") === "") {
             const user_id = localStorage.getItem("user_id")
-            fetch(`http://3.110.175.181:8080/get-full-name/${user_id}`, {
+            fetch(`http://localhost:8000/get-full-name/${user_id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const Slider = () => {
 
     return (
         <div className="bg-gray-100">
-            <div className="fixed top-4 left-4 h-[95%] bg-white w-72 p-8 flex flex-col space-y-1 shadow-md rounded-xl">
+            <div className="fixed top-4 left-4 h-[95%] bg-white w-72 p-8 flex flex-col space-y-1 shadow-lg rounded-xl">
                 <div className="flex items-center space-x-2">
                     <span className="text-xl font-bold">NeuroGen</span>
                 </div>

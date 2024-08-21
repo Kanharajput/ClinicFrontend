@@ -23,7 +23,7 @@ export default function Dashboard() {
     useEffect(() => {
         if (localStorage.getItem("username") === null || localStorage.getItem("username") === "") {
             const user_id = localStorage.getItem("user_id")
-            fetch(`http://3.110.175.181:8080/get-full-name/${user_id}`,{
+            fetch(`http://localhost:8000/get-full-name/${user_id}`,{
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export default function Dashboard() {
         setLoading(true);
 
         // fetch the data
-        fetch(`http://3.110.175.181:8080/query/${userInput}`, {
+        fetch(`http://localhost:8000/query/${userInput}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

@@ -22,7 +22,7 @@ export default function UserDetails() {
         const full_phone_number = phoneCode.concat(" ", phoneNumber)
         // Submit the formData to the API
         const user_id = localStorage.getItem("user_id")
-        fetch(`http://3.110.175.181:8080/register-user-details/${user_id}`, {
+        fetch(`http://localhost:8000/register-user-details/${user_id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

@@ -18,7 +18,7 @@ export default function QuickDDsx() {
         setLoading(true);
 
         // Submit the formData to the API
-        fetch(`http://3.110.175.181:8080/differential-diagonise?question=${userInput}`, {
+        fetch(`http://localhost:8000/differential-diagonise?question=${userInput}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

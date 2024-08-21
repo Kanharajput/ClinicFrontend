@@ -14,7 +14,7 @@ const CashSimulation = () => {
         setLoading(true);
 
         // fetch the data
-        fetch(`http://3.110.175.181:8080/case-simulation?user_input=${userResponse}`, {
+        fetch(`http://localhost:8000/case-simulation?user_input=${userResponse}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const CashSimulation = () => {
         setLoading(true);
 
         // fetch the data
-        fetch(`http://3.110.175.181:8080/case-simulation?user_input=Next Question`, {
+        fetch(`http://localhost:8000/case-simulation?user_input=Next Question`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const CashSimulation = () => {
         if (localStorage.getItem("username") === null || localStorage.getItem("username") === "") {
             const user_id = localStorage.getItem("user_id")
             console.log(user_id)
-            fetch(`http://3.110.175.181:8080/get-full-name/1`, {
+            fetch(`http://localhost:8000/get-full-name/1`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
