@@ -16,6 +16,26 @@ code {
     monospace;
 }
 
+input {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+select {
+  background: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+textarea {
+  background: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
 .dashboard-output ul{
   list-style: disc;
   margin-left:20px;

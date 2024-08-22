@@ -149,7 +149,7 @@ export default function Dashboard() {
                     <div className="relative flex justify-center pt-8">
                         {/* <!-- Input Field --> */}
                         <input id="userInput" placeholder="Enter your question here"
-                            className="w-[70%] p-3 border border-gray-300 rounded-lg"
+                            className="w-[70%] p-3 border border-gray-300 rounded-lg focus:border-blue-400"
                             value={userInput}
                             onChange={(e) => setUserInput(e.target.value)}
                             onKeyDown={handleKeyDown}/>
