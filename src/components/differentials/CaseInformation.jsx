@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CaseInformation = ({ onNext }) => {
+const CaseInformation = ({ onNext, onBack }) => {
     const [age, setAge] = useState('');
     const [selectedSex, setSelectedSex] = useState('Male');
     const [pmhx, setPmhx] = useState('');
@@ -21,6 +21,11 @@ const CaseInformation = ({ onNext }) => {
         onNext(caseInformation);
     };
 
+    // go one step back
+    const handleBack = () => {
+        onBack()
+    }
+
     return (
         // <div>
         //     <h2>Page 2</h2>
@@ -35,32 +40,26 @@ const CaseInformation = ({ onNext }) => {
         <div className="bg-gray-100">
             <div className="flex min-h-screen">
                 {/* <!-- Main Content --> */}
-                <div className="flex-1 p-8 space-y-8">
-
-                    {/* <!-- Header --> */}
-                    <div className="mb-6">
-                        <h2 className="text-2xl font-semibold">Guiding You to the Right Diagnosis</h2>
-                    </div>
-                    <div className="flex justify-between items-center">
-                        <h1 className="text-2xl font-bold">2. Simulated Case Information</h1>
-                    </div>
+                <div className="flex-1 space-y-8">
 
                     {/* <!-- Form --> */}
                     <div className="bg-white p-6 rounded-lg shadow-md">
+                        <h1 className="text-xl font-bold mb-4">Simulated Case Information</h1>
+                        <hr />
                         <form action="#">
-                            <div className="mb-4">
-                                <label className="block text-gray-700 font-bold mb-2" for="age">Age*</label>
+                            <div className="my-4">
+                                <label className="block text-gray-700 font-bold mb-2" for="age">Age<span className='text-red-500'>*</span></label>
                                 <input
-                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                    className="w-2/4 p-3 border border-gray-300 rounded-lg focus:border-blue-400"
                                     type="number" id="age" placeholder="Enter Number"
                                     value={age}
                                     onChange={(e) => setAge(e.target.value)} />
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-gray-700 font-bold mb-2" for="sex">Sex*</label>
+                                <label className="block text-gray-700 font-bold mb-2" for="sex">Sex<span className='text-red-500'>*</span></label>
                                 <select
-                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                    className="w-2/4 p-3 border border-gray-300 rounded-lg text-gray-500 focus:border-blue-400"
                                     id="sex"
                                     value={selectedSex}
                                     onChange={handleSelectedSex}>
@@ -71,9 +70,9 @@ const CaseInformation = ({ onNext }) => {
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-gray-700 font-bold mb-2" for="pmhx">PMHX</label>
+                                <label className="block text-gray-700 font-bold mb-2" for="pmhx">PMHx</label>
                                 <input
-                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:border-blue-400"
                                     type="text" id="pmhx"
                                     placeholder="Past Medical History, Example: Lung Ca, HTN, Tb, CAD, Asthma..." 
                                     value={pmhx}
@@ -84,7 +83,7 @@ const CaseInformation = ({ onNext }) => {
                             <div className="mb-6">
                                 <label className="block text-gray-700 font-bold mb-2" for="meds">Meds</label>
                                 <input
-                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:border-blue-400"
                                     type="text" id="meds" placeholder="Example: Telmisartan 40" 
                                     value={meds}
                                     onChange={(e) => setMeds(e.target.value)} 
@@ -92,11 +91,11 @@ const CaseInformation = ({ onNext }) => {
                             </div>
 
                             {/* <!-- Buttons --> */}
-                            <div className="flex justify-between">
+                            <div className="flex justify-end space-x-4">
                                 <button
-                                    className="bg-gray-200 text-gray-700 p-3 rounded-lg font-bold hover:bg-gray-300 focus:ring focus:ring-gray-200">Back</button>
+                                    className="bg-white text-blue-700 border border-blue-500 rounded-lg hover:bg-blue-500 hover:text-white py-2 px-4" onClick={handleBack}>Back</button>
                                 <button
-                                    className="bg-blue-500 text-white p-3 rounded-lg font-bold hover:bg-blue-700 focus:ring focus:ring-blue-200" onClick={handleContinue}>Continue</button>
+                                    className="bg-blue-500 text-white rounded-lg hover:border hover:border-blue-500 hover:bg-white hover:text-blue-700 py-2 px-4" onClick={handleContinue}>Continue</button>
                             </div>
                         </form>
                     </div>

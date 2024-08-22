@@ -49,28 +49,6 @@ const DifferentialOutput = ({completeQuery}) => {
         <div className="flex flex-col md:flex-row">
             {/* <!-- Main Content --> */}
             <div className="flex-1 p-8 space-y-8">
-                {/* <!-- Header --> */}
-                <div className="mb-6">
-                    <h2 className="text-2xl font-semibold">Guiding You to the Right Diagnosis</h2>
-                    {/* <div className="flex space-x-2 mt-2">
-                        <div className="flex items-center">
-                            <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                            <span className="ml-2 text-sm">History of Present Illness</span>
-                        </div>
-                        <div className="flex items-center">
-                            <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                            <span className="ml-2 text-sm">Simulated Case Information</span>
-                        </div>
-                        <div className="flex items-center">
-                            <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                            <span className="ml-2 text-sm">Examination & Investigatory Findings</span>
-                        </div>
-                        <div className="flex items-center">
-                            <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                            <span className="ml-2 text-sm">Diagnosis Preview</span>
-                        </div>
-                    </div> */}
-                </div>
 
                 {/* <!-- Content --> */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

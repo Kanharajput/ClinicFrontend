@@ -1,12 +1,27 @@
 import React, { useState } from 'react';
 import scoreImg from "../../assests/img/dashboard/score.png";
+import QuickDDsx from '../differentials/QuickDDSx.jsx';
 
 
-const History = ({ onNext }) => {
+const History = ({ onNext, quickSubmit }) => {
     const [chiefComplaint, setChiefComplaint] = useState('');
     const [duration, setDuration] = useState('');
     const [symptoms, setSymptoms] = useState('');
     const [selectedPeriod, setSelectedPeriod] = useState('Days');
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+
+    const handlePopupOpen = () => {
+        setIsPopupOpen(true);
+    };
+
+    const handlePopupClose = () => {
+        setIsPopupOpen(false);
+    };
+    
+    const handleQuickSubmit = (quickInput) => {
+        quickSubmit(quickInput);
+    };
 
     const handleSelectChange = (event) => {
         setSelectedPeriod(event.target.value);
@@ -24,15 +39,13 @@ const History = ({ onNext }) => {
     };
 
     return (
-        <div className="bg-gray-100">
         <div className="flex min-h-screen">
         {/* <!-- Main Content --> */}
-        <div className="flex-1 p-8 space-y-8">
-
-            {/* <!-- Header --> */}
-            <div className="mb-6">
-                <h2 className="text-2xl font-semibold">Guiding You to the Right Diagnosis</h2>
-            </div>
+        <div className="flex-1 space-y-8">
+            {/* quick ddsx */}
+                {isPopupOpen && (
+                    <QuickDDsx onClose={handlePopupClose} onSubmit={handleQuickSubmit}/>
+                )}
 
             {/* <!-- Form --> */}
             <div className="bg-white p-6 rounded-lg shadow-md">
@@ -47,7 +60,7 @@ const History = ({ onNext }) => {
                         </div>
                         <div className='flex align-center bg-white border border-blue-700 py-1 px-2'>
                             <img src={scoreImg} alt="message-icon"></img>
-                            <a href="/quick_ddsx" className="text-blue-500 text-sm font-bold">Try quick DDX</a> 
+                            <span className="text-blue-500 text-sm font-bold hover:cursor-pointer" onClick={handlePopupOpen}>Try quick DDX</span> 
                         </div>
                     </div>
                 </div>
@@ -99,7 +112,6 @@ const History = ({ onNext }) => {
                 <p className='text-gray-500'>This is intended for educational purposes and not for medical diagnosis or treatment.</p>
             </div>
         </div>
-    </div>
     </div>
     );
 };
