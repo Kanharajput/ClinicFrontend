@@ -1,6 +1,6 @@
 // import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import LoadingSpinner from '../components/LoadingSpinner';
+import LoadingSpinner from '../LoadingSpinner';
 
 
 const DifferentialOutput = ({completeQuery}) => {

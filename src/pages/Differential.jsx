@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import History from '../components/differentials/History';
 import CaseInformation from '../components/differentials/CaseInformation';
 import Objective from '../components/differentials/Objective';
-import DifferentialOutput from './DifferentialOutput';
+import DifferentialOutput from '../components/differentials/DifferentialOutput';
 
 
 // Icons can be imported as SVG components or URLs
