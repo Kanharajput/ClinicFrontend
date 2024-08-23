@@ -36,6 +36,10 @@ const Differential = () => {
     const handleBack = () => {
         setCurrentPage(currentPage - 1);
     }
+    
+    const handleBackGenerator = () => {
+        setCurrentPage(1);
+    }
 
     // as quick submit has just single input
     const handleQuickSubmit = (quickInput) => {
@@ -48,7 +52,7 @@ const Differential = () => {
     return (
         <div className="p-8">
             {/* Title */}
-            <h2 className="text-2xl font-bold mb-6">Guiding You to the Right Diagnosis</h2>
+            <h2 className="text-2xl font-bold mb-3">Guiding You to the Right Diagnosis</h2>
 
             {/* Progress Indicator */}
             <div className="flex items-center justify-between mb-8">
@@ -81,7 +85,7 @@ const Differential = () => {
             {currentPage === 1 && <History onNext={handleNext} quickSubmit={handleQuickSubmit}/>}
             {currentPage === 2 && <CaseInformation onBack={handleBack}  onNext={handleNext} />}
             {currentPage === 3 && <Objective onBack={handleBack}  onNext={handleNext} />}
-            {currentPage === 4 && <DifferentialOutput completeQuery={completeQuery} />}
+            {currentPage === 4 && <DifferentialOutput completeQuery={completeQuery} backGenerator={handleBackGenerator}/>}
         </div>
         </div>
     );
